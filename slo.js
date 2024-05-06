@@ -30,13 +30,13 @@ function updateTask(){
 	b=Math.round(Math.random()*user.level);
 	//if (b>10) b=20-b;
 
-	ans[0]=a*b
+	ans[0]=a+b
 	i=1
 	while (i<4){
-		l=Math.round(Math.random()*user.level*user.level);
+		l=Math.round(Math.random()*2*user.level);
 		for (j=0;j<i;j++){
 			if (ans[j]==l){
-				l=Math.round(Math.random()*user.level*user.level);
+				l=Math.round(Math.random()*2*user.level);
 				j=0;
 			}
 		}
@@ -46,7 +46,7 @@ function updateTask(){
 	shuffle(ans);
 
 	quest = document.getElementById("quest");
-	quest.innerHTML="<h1>"+a+" * "+b+"</h1>";
+	quest.innerHTML="<h1>"+a+" + "+b+"</h1>";
 
 	for (i=0;i<4;i++){
 		for (j=0;j<3;j++){
@@ -56,7 +56,7 @@ function updateTask(){
 		j=Math.round(Math.random()*2);
 		ansvar = document.getElementById("ans"+j+i);
 		
-		ansvar.innerHTML="<button class='button' color='red' onclick='check("+ans[i]+")'> "+ans[i]+"</button> <br>  <img src='str.png'>";
+		ansvar.innerHTML="<button class='button' onclick='check("+ans[i]+")'> "+ans[i]+"</button> <br>  <img src='str.png'>";
 	}
 
 }
@@ -67,7 +67,7 @@ var audio = new Audio();
 audio.preload = 'auto';
 
 	
-	if (val==a*b) {
+	if (val==a+b) {
 		user.score++;
 		if (n<0) {
 			users.push(user);
